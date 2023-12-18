@@ -28,3 +28,9 @@ int cmykToRgb(double c, double m, double y, double k, int* r, int* g, int* b) {
     if (c < 0 || m < 0 || y < 0 || k < 0 || c > 1 || m > 1 || y > 1 || k > 1) {
         return 1; // Error: CMYK values out of range
     }
+    *r = round(255 * (1 - c) * (1 - k));
+    *g = round(255 * (1 - m) * (1 - k));
+    *b = round(255 * (1 - y) * (1 - k));
+
+    return 0; // No error
+}
