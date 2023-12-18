@@ -24,3 +24,7 @@ int rgbToCmyk(int r, int g, int b, double* c, double* m, double* y, double* k) {
 
     return 0; 
 }
+int cmykToRgb(double c, double m, double y, double k, int* r, int* g, int* b) {
+    if (c < 0 || m < 0 || y < 0 || k < 0 || c > 1 || m > 1 || y > 1 || k > 1) {
+        return 1; // Error: CMYK values out of range
+    }
