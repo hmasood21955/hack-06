@@ -14,3 +14,13 @@ int rgbToCmyk(int r, int g, int b, double* c, double* m, double* y, double* k) {
         *c = 1 - (double)r / 255;
         *m = 1 - (double)g / 255;
         *y = 1 - (double)b / 255;
+
+        double minCMY = fmin(fmin(*c, *m), *y);
+        *c = (*c - minCMY) / (1 - minCMY);
+        *m = (*m - minCMY) / (1 - minCMY);
+        *y = (*y - minCMY) / (1 - minCMY);
+        *k = minCMY;
+    }
+
+    return 0; 
+}
